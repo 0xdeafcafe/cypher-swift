@@ -1,0 +1,25 @@
+{
+  "name": "cypher-swift",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "lerna": "^6.4.1",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.4.1",
+    "@types/jest": "^29.4.0",
+    "jest": "^29.4.1",
+    "ts-jest": "^29.0.5"
+  },
+  "scripts": {
+    "build": "lerna run build --stream",
+    "test": "lerna run test --stream"
+  }
+}

@@ -1,2 +1,3 @@
 packages/lib/lyrics/data            linguist-generated=true
 packages/lib/lyrics/compiled-lyrics linguist-generated=true
+yarn.lock                           linguist-generated=true
