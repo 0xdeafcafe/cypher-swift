@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+
+		"declaration": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"target": "ES2022",
+		"moduleResolution": "node",
+		"module": "Node16",
+		"allowSyntheticDefaultImports": true,
+
+		"typeRoots": [
+			"./typings",
+			"./node_modules/@types"
+		],
+
+		"paths": {
+		}
+	},
+	"exclude": [
+		"node_modules",
+		"dist",
+		"typings"
+	]
+}
