@@ -1,0 +1,15 @@
+{
+  "name": "@cypher-swift/lib",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.js",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "prestart": "yarn build",
+    "build": "tsc",
+    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --no-cache -- ./src"
+  }
+}

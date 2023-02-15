@@ -16,6 +16,8 @@
 		],
 
 		"paths": {
+			"@cypher-swift/lib": ["packages/lib/src"],
+			"@cypher-swift/lib/*": ["packages/lib/src/*"],
 		}
 	},
 	"exclude": [
