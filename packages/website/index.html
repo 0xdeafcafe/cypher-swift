@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="preload" href="dist/index.js" as="script" type="application/javascript" crossorigin />
+
+	<title>Cypher Swift</title>
+	<style>
+		:root {
+			--album-title-size: calc((35vmin - 4.5rem) / 7);
+			--album-listing-title-size: 1rem;
+			--album-listing-item-size: 1rem;
+		}
+
+		@keyframes record-slide {
+			0% { right: calc(20vmin * -1); }
+			30% { right: calc(23vmin * -1); }
+			100% { right: 0; }
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Reset */
+		ul, li {
+			list-style-type: none;
+		}
+
+		/* Scaffolding */
+		.unnamed-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			height: 100vh;
+		}
+
+		/* Album */
+		.album {
+			position: relative;
+			width: 80vmin;
+			height: 80vmin;
+
+			box-shadow: -4px 4px 11px rgba(0, 0, 0, 0.23);
+		}
+
+		.album-record {
+			pointer-events: none;
+			position: absolute;
+
+			height: 100%; width: 100%;
+			right: calc(20vmin * -1);
+			top: 0; bottom: 0;
+
+			background-image: url('assets/vinyl.png');
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+
+		.album-record.ejecting {
+			animation: record-slide 1.4s ease-in-out reverse;
+			right: calc(20vmin * -1);
+		}
+
+		.album-record.playing {
+			animation: record-slide 1.4s ease-in-out;
+			right: 0;
+		}
+
+		.album-sleave {
+			position: relative;
+			display: grid;
+			grid-template-columns: 0.2fr 0.8fr;
+			grid-template-rows: 0.2fr 0.8fr;
+
+			overflow: hidden;
+
+			background-color: #ecebe7;
+			background-image: url('assets/background.jpg');
+			background-size: 50%;
+
+			width: 100%; height: 100%;
+
+			overflow: hidden;
+		}
+		.album-sleave.app-view {
+			transition: grid-template-rows .2s ease;
+			grid-template-rows: 1fr 0.1fr;
+		}
+		.album-listing {
+			grid-row: 2;
+
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
+
+			margin-left: 20px;
+		}
+		.album-listing.hidden {
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity .2s ease;
+		}
+		.album-listing ul {
+			padding: 0;
+			margin: 0;
+
+			font-size: var(--album-listing-title-size);
+			font-weight: 300;
+		}
+		.album-listing ul span {
+			border: 10px solid;
+			border-width: 0;
+			border-image-slice: 1;
+			border-bottom-width: 1px;
+			border-image-source: linear-gradient(to right, #5b6487, #709aae);
+		}
+		.album-listing .sides-list .options-list {
+			margin-top: .75rem;
+			margin-bottom: 1.5rem;
+			font-size: var(--album-listing-item-size);
+			font-weight: 600;
+		}
+
+		.album-branding {
+			grid-row: 2;
+
+			display: flex;
+			flex-direction: column;
+		}
+		.album-title {
+			display: inline-block;
+			width: fit-content;
+			font-weight: 700;
+			font-size: var(--album-title-size);
+			margin: 0;
+			margin-bottom: .5rem;
+		}
+		.album-style-image {
+			width: 100%;
+			height: calc(120% - var(--album-title-size) - .5rem);
+
+			background-image: url('assets/taytay.webp');
+			background-size: cover;
+		}
+
+		/* Typography */
+		a {
+			transition: color .2s ease;
+		}
+		.midnights-text {
+			font-family: Helvetica;
+			background-image: url('assets/text-background.jpg');
+			background-size: cover;
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+		.midnights-text:is(a):hover {
+			color: #ffffff55;
+			cursor: pointer;
+		}
+
+		/* General */
+		.masking {
+			position: absolute;
+			top: 0; bottom: 0; left: 0; right: 0;
+			background: linear-gradient(180deg, rgba(255,255,255,0) 70%, rgba(0,0,0,0.15) 100%);
+			pointer-events: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="unnamed-container">
+		<div class="album">
+			<div class="album-record ejecting"></div>
+			<div class="album-sleave">
+				<div class="album-listing">
+					<ul class="sides-list">
+						<li>
+							<span class="midnights-text">Side A</span>
+		
+							<ul class="options-list">
+								<li>
+									<a
+										id="btn-encode"
+										class="midnights-text"
+										href="#"
+									>
+										Encode
+									</a>
+								</li>
+								<!-- <li>Encode</li> -->
+								<li class="midnights-text">Decode</li>
+							</ul>
+						</li>
+						<li>
+							<span class="midnights-text">Side B</span>
+		
+							<ul class="options-list">
+								<li>
+									<a
+										class="midnights-text"
+										href="https://twitter.com/0xdeafcafe"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Tweet thread
+									</a>
+								</li>
+								<li>
+									<a
+										class="midnights-text"
+										href="https://gihtub.com/0xdeafcafe/cypher-swift"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Github
+									</a>
+								</li>
+								<li>
+									<a
+										class="midnights-text"
+										href="https://gihtub.com/0xdeafcafe/cypher-swift"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										About
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="album-branding">
+					<h1 class="album-title midnights-text">Cypher Swift</h1>
+					<div class="album-style-image"></div>
+				</div>
+			</div>
+			<div class="masking"></div>
+		</div>
+	</div>
+	<script src="dist/index.js" type="application/javascript"  defer></script>
+</body>
+</html>
