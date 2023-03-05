@@ -1,5 +1,5 @@
 import { decodeCypherKey } from './cipher-key.js';
-import BitManager, { SeekOrigin } from './lib/bit-manager';
+import BitManager, { SeekOrigin } from './lib/bit-manager.js';
 import { randomInteger } from './lib/crypto.js';
 
 export async function encryptText(encodedCipherKey: string, input: string): Promise<string> {

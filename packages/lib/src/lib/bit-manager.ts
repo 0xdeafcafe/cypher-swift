@@ -1,4 +1,4 @@
-import { randomInteger } from "./crypto";
+import { randomInteger } from './crypto.js';
 
 export enum SeekOrigin {
 	Begin,
