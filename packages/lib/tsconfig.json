@@ -1,6 +1,7 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
+		"composite": true,
 		"outDir": "dist",
 		"rootDir": "src/",
 		"module": "ESNext",
@@ -13,7 +14,8 @@
 		]
 	},
 	"include": [
-		"src/**/*.ts"
+		"src/**/*.ts",
+		"src/**/*.json"
 	],
 	"exclude": [
 		"node_modules",
