@@ -1,0 +1,20 @@
+{
+  "name": "@cypher-swift/cli",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "bin": "./dist/index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "prestart": "yarn build",
+    "build": "tsc",
+    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --no-cache -- ./src"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.6.1",
+    "commander": "^10.0.0",
+    "valid-filename": "^4.0.0",
+    "@cypher-swift/lib": "^1.0.0"
+  }
+}
